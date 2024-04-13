@@ -1,5 +1,5 @@
 #include<iostream>
-/*
+
 using namespace std;
 
 bool prime[1000001];
@@ -47,4 +47,4 @@ int main() {
 		}
 	}
 	if (!flag) cout << -1;
-}*/
+}
