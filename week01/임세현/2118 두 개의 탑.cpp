@@ -1,6 +1,6 @@
 #include<iostream>
 #include<algorithm>
-/*
+
 using namespace std;
 
 int arr[50001];
@@ -25,4 +25,4 @@ int main() {
 		}
 	}
 	cout << big;
-}*/
+}
