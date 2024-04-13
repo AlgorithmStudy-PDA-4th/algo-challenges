@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<queue>
-/*
+
 using namespace std;
 
 struct cmp {
@@ -35,15 +35,4 @@ int main() {
 		time.pop();
 	}
 	cout << room.size();
-}*/
-
-/*
-1 8
-3 7
-5 6
-6 11
-8 10
-9 16
-10 14
-11 12
-*/
+}
