@@ -2,7 +2,7 @@
 #include<vector>
 #include<climits>
 #include<algorithm>
-/*
+
 using namespace std;
 
 int main() {
@@ -39,11 +39,11 @@ int main() {
 		else fir++;
 	}
 	cout << ans_1 << " " << ans_2;
-}*/
+}
 
 /*
 
-¹Ý·Ê ¸ðÀ½
+Â¹ÃÂ·ÃŠ Â¸Ã°Ã€Â½
 5
 -99 -2 -1 4 98
 -99 98
