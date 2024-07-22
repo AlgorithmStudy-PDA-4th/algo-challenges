@@ -30,3 +30,4 @@
 | 15주차 | [뉴스 클러스터링](https://school.programmers.co.kr/learn/courses/30/lessons/17677) | 구현 |
 | 15주차 | [햄버거 만들기](https://school.programmers.co.kr/learn/courses/30/lessons/133502) | 구현, 스택 |
 | 16주차 | [스티커](https://www.acmicpc.net/problem/9465) | DP |
+| 17주차 | [에디터](https://www.acmicpc.net/problem/1406) | 구현 |
