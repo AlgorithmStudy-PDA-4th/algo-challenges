@@ -1,50 +1,82 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class Main {
+class Solution {
+    static int[] dx = {1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
+    static boolean[][] isVisited;
+    static int[] memo;
+    static int n, m;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        int n = Integer.parseInt(br.readLine());
-        long[][] dp = new long[n][n];
-        int[][] arr = new int[n][n];
-        int le = dp.length;
+    public int solution(int[][] land) {
+        int answer = Integer.MIN_VALUE;
+        m = land[0].length; // 가로 길이
+        n = land.length; // 세로 길이
+        isVisited = new boolean[n][m];
+        memo = new int[m];
 
-        for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                arr[i][j] = Integer.parseInt(st.nextToken());
-            }
-        }
-        dp[0][0] = 1;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int curNumber = arr[i][j];
-                if (curNumber == 0) break;
-                //curNumber만큼 오른쪽 or 아래쪽 이동가능
-                //가로 범위 안쪽인 경우
-                if (j + curNumber < n) {
-                    dp[i][j + curNumber] += dp[i][j];
-                }
-                //세로 범위 안쪽인 경우
-                if (i + curNumber < n) {
-                    dp[i + curNumber][j] += dp[i][j];
+                //가로 고정하고 세로로 bfs진행
+                if (!isVisited[j][i] && land[j][i] == 1) {
+                    bfs(j, i, land);
                 }
             }
         }
+        for (int i = 0; i < m; i++) {
+            answer = Math.max(answer, memo[i]);
+        }
 
-        System.out.println(dp[n - 1][n - 1]);
+        return answer;
+    }
+
+    static void bfs(int x, int y, int[][] arr) {
+        isVisited[x][y] = true;
+        Queue<Node> q = new LinkedList<>();
+        Set<Integer> set = new HashSet<>();
+
+        q.add(new Node(x, y));
+        int cnt = 1;
+
+        while (!q.isEmpty()) {
+            Node cur = q.poll();
+            int cx = cur.x;
+            int cy = cur.y;
+            set.add(cy);
+
+            for (int i = 0; i < 4; i++) {
+                int nx = cx + dx[i];
+                int ny = cy + dy[i];
+
+                if (isInRange(nx, ny) && !isVisited[nx][ny] && arr[nx][ny] == 1) {
+                    isVisited[nx][ny] = true;
+                    cnt++;
+                    q.add(new Node(nx, ny));
+                }
+            }
+        }
+
+        for (int cur : set) {
+            memo[cur] += cnt;
+        }
+    }
+
+    static boolean isInRange(int x, int y) {
+        return x >= 0 && y >= 0 && x < n && y < m;
+    }
+}
+
+class Node {
+    int x;
+    int y;
+
+    public Node(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
 /**
- * 크기 n
- * 입력 값은 0 ~ 9
- * 이동은 반드시 오른쪽 or 아래쪽
- * 0이 종착지
- * dp 사이즈 int로 했더니 틀림
- * 경로의 개수는 2^63-1보다 작거나 같다. 라는 조건을 확인 못함
+ * bfs로 구현했는데, 효율성 테스트 실패함
+ * 조건문 좀 바꿔보고 하다가 검색해보니
+ * set쓰라고 되어있어서 바꿈
  */
