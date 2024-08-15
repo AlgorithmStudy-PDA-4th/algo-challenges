@@ -33,3 +33,4 @@
 | 17주차 | [에디터](https://www.acmicpc.net/problem/1406) | 구현 |
 | 17주차 | [석유시추](https://school.programmers.co.kr/learn/courses/30/lessons/250136) | BFS |
 | 18주차 | [배열 돌리기](https://www.acmicpc.net/problem/17276) | 구현 |
+| 19주차 | [아날로그 시계](https://school.programmers.co.kr/learn/courses/30/lessons/250135) | 구현 |
